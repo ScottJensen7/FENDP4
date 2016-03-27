@@ -39,7 +39,7 @@ This project depends on the following files and needs a browser to display the i
 
 In addition to the basic functionality, more cool functionality has been added to the game. Here are the features I have added:
 
-1. Collectibles: three orange gems were added to the game, at the top of the scene in the water. The player has to collect them and then the gem shrinks and the player brings it to the grassy patch.
+1. Collectibles: three orange gems were added to the game, at the top of the scene in the water. The player has to collect them, the gem shrinks and the player brings it to the grassy patch.
 
 2. Player selection: allow the user to select the image for the player character before starting the game: char-cat-girl.png, char-princess-girl.png, and char-boy.png.
 
