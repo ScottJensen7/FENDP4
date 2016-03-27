@@ -3,14 +3,16 @@
  * Name: Scott Jensen
  * Updated: 3/19/16 
  */
-// Enemies our player must avoid
 
+// Character is the parent of all players and enemies.
+// I made more object oriented like the reviewers do.
 var Character = function(x, y, sprite) {
     this.sprite = sprite;
     this.x = x;
     this.y = y;
 }
 
+//Enemies our player must avoid
 var Enemy = function(x, y, sprite, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -65,6 +67,8 @@ var Player = function(name, sprite, x, y) {
     this.y = y;
     this.pocket = null;
 };
+
+Player.prototype = Object.create(Character.prototype);
 
 // Update the player's position
 Player.prototype.update = function(dt) {};
