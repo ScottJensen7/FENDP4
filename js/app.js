@@ -4,17 +4,26 @@
  * Updated: 3/19/16 
  */
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+
+var Character = function(x, y, sprite) {
+    this.sprite = sprite;
+    this.x = x;
+    this.y = y;
+}
+
+var Enemy = function(x, y, sprite, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    this.speed = speed;
+    this.sprite = sprite;
     this.x = x;
     this.y = y;
-    this.speed = speed;
 };
+
+Enemy.prototype = Object.create(Character.prototype);
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -32,7 +41,7 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 500) {
         this.x = -100;
     }
-    if (checkEnemyCollision(this)) {
+    if (this.checkEnemyCollision(this)) {
         reset();
     }
 };
@@ -66,7 +75,7 @@ Player.prototype.render = function() {
     // The player picks up all the gems and places them on the grass,
     // then they jump in the lake and the game is over.
     // When the game is finished, the gold star shows up on it.
-    if (checkPlayerCollisionWithWater(this) && allGemsOnGrass()) {
+    if (this.checkPlayerCollisionWithWater() && allGemsOnGrass()) {
         ctx.drawImage(Resources.get("images/goldstar.png"), 50, 60);
         isGameWon = true;
     }
@@ -76,24 +85,24 @@ Player.prototype.render = function() {
 // player.
 Player.prototype.handleInput = function(key) {
     // User pushes up and won't go off the screen. //
-    if (key == 'up' && this.y - 82 >= -50) {
+    if (key == 'up' && this.y >= 20) {
         // move player up
         this.y = this.y - 82;
     }
     // User pushes down and won't go off the screen. //
-    else if (key == 'down' && this.y + 82 <= 400) {
+    else if (key == 'down' && this.y <= 400) {
         // move player down
         this.y = this.y + 82;
     }
     // User moves to the left square in the screen and will not go outside of
     // it. //
-    else if (key == 'left' && this.x - 97 >= 0) {
+    else if (key == 'left' && this.x >= 97) {
         // move player left
         this.x = this.x - 97;
     }
     // User moves to the right square in the screen and will not go outside of
     // it. //
-    else if (key == 'right' && this.x + 97 <= 400) {
+    else if (key == 'right' && this.x <= 303) {
         // move player right
         this.x = this.x + 97;
     }
@@ -104,18 +113,18 @@ Player.prototype.handleInput = function(key) {
 
 // Check the given enemy position to see if it is close to the player.
 // If it is close enough to the player, then return true.
-var checkEnemyCollision = function(enemy) {
+Enemy.prototype.checkEnemyCollision = function() {
     var collided = false;
-    if (enemy.x >= player.x - 40 && enemy.x <= player.x + 40 && enemy.y >= player.y - 40 && enemy.y <= player.y + 40) {
+    if (this.x >= player.x - 40 && this.x <= player.x + 40 && this.y >= player.y - 40 && this.y <= player.y + 40) {
         collided = true;
     }
     return collided;
 };
 
 // Check the player position to see if it crossed the lake.
-var checkPlayerCollisionWithWater = function(player) {
+Player.prototype.checkPlayerCollisionWithWater = function() {
     var collided = false;
-    if (player.y < 10) {
+    if (this.y < 10) {
         collided = true;
     }
     return collided;
@@ -135,10 +144,11 @@ allEnemies = null;
 player = null;
 
 // This resets the position of the enemies and a player.
+var sprite = "images/enemy-bug.png";
 function reset() {
-    allEnemies = [new Enemy(0, 67, randomSpeed()),
-        new Enemy(0, 150, randomSpeed()),
-        new Enemy(0, 73 + 160, randomSpeed())
+    allEnemies = [new Enemy(0, 67, sprite, randomSpeed()),
+        new Enemy(0, 150, sprite, randomSpeed()),
+        new Enemy(0, 73 + 160, sprite, randomSpeed())
     ];
     player = new Player("Scott", 'images/char-boy.png', 200, 410);
     extraCreditReset();

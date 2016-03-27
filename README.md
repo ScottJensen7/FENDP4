@@ -1,11 +1,11 @@
-#Project 3 Frogger Game
-#####by Scott Jensen, March 10, 2016
+# Project 4 Classic Arcade Game
+##### by Scott Jensen, March 10, 2016
 
-In this game we have a Player and Enemies. The goal of the player is to reach the water, without colliding into any one of the enemies. The player starts at the bottom middle of the scene on the grassy patch, and can move left, right, up and down. The enemies move in randomally varying speeds from left to right on the paved block portion of the scene. Once a the player collides with an enemy, the game is reset and the player moves back to the start square. Once the player reaches the water the game is won. 
+In this game we have a Player and Enemies. The goal of the player is to reach the water, without colliding into any one of the enemies. The player starts at the bottom middle of the scene on the grassy patch, and can move left, right, up and down, using the arrow keys. The enemies move in randomally varying speeds from left to right on the paved block portion of the scene. Once a the player collides with an enemy, the game is reset and the player moves back to the start square. Once the player reaches the water the game is won. 
 
 See about extra credit funtionality below!
 
-###Files, Dependencies, and Use
+### Files, Dependencies, and Use
 
 This project depends on the following files and needs a browser to display the index.html page.
 
@@ -33,9 +33,9 @@ This project depends on the following files and needs a browser to display the i
 * `images/stone-block.png`
 * `images/water-block.png`
 
-##Extra Credit
+## Extra Credit
 
-#####Additional Functionality
+##### Additional Functionality
 
 In addition to the basic functionality, more cool functionality has been added to the game. Here are the features I have added:
 
@@ -45,12 +45,12 @@ In addition to the basic functionality, more cool functionality has been added t
 
 3. Winning gold star: when all the gems are dropped off on the grass and the player goes to the water, the big gold star shows up and it says, "Congratulations! You won! Press any arrow key to play again."
 
-##Miscellaneous  
+## Miscellaneous  
 
 The courses and discussion groups are always helpful with projects. I got help with basics of making objects passing in parameters:
 `https://www.youtube.com/watch?v=XgKYna8_tkI&list=PLZEZPz6HkCZn0R-SJf5WzEDljMvqUAuFW&index=13`
 
-######Original README Follows
+###### Original README Follows
 
 Students should use this [rubric](https://www.udacity.com/course/viewer/#!/c-nd001/l-2696458597/m-2687128535) for self-checking their submission.
 
